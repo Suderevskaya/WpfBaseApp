@@ -1,0 +1,45 @@
+﻿<Window x:Class="WpfBaseApp.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfBaseApp"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="900"
+        MouseWheel="Canvas_MouseWheel">
+    <Grid>
+        <Menu Height="25" Panel.ZIndex="0" VerticalAlignment="Top">
+            <MenuItem Header="Save to file" Height="25" Width="77" Click="saveClick"/>
+            <MenuItem Header="Load from file" Click="loadClick"/>
+        </Menu>
+        <Canvas x:Name="Canvas" Height="520" Width="600" Margin="0,25,310,50" >
+            <TextBlock Panel.ZIndex="3" Margin="8,500,0,0"> Y</TextBlock>
+            <Path Panel.ZIndex="5" Stroke="Gray"  StrokeThickness="1" >
+                <Path.Data>
+                    <LineGeometry StartPoint="20,25" EndPoint="20,500" />
+                </Path.Data>
+            </Path>
+            <Image x:Name ="AxisY" Panel.ZIndex="8" Height="475" Canvas.Top="20" Width="23" HorizontalAlignment="Left" Canvas.Left="1" VerticalAlignment="Top" />
+            <TextBlock Panel.ZIndex="4" Margin="560,8,0,0"> X</TextBlock>
+            <Path Panel.ZIndex="6" Stroke="Gray"  StrokeThickness="1" >
+                <Path.Data>
+                    <LineGeometry StartPoint="20,25" EndPoint="550,25" />
+                </Path.Data>
+            </Path>
+            <Image x:Name ="AxisX" Panel.ZIndex="8" Height="18" Canvas.Top="7" Width="530" HorizontalAlignment="Left" Canvas.Left="20" VerticalAlignment="Top" />
+            <Path Panel.ZIndex="9" Stroke="Green"  StrokeThickness="1" >
+                <Path.Data>
+                    <PathGeometry x:Name ="Draw">
+                    </PathGeometry>
+                </Path.Data>
+            </Path>
+        </Canvas>
+        <DataGrid x:Name ="PointsTable" Panel.ZIndex="1" AutoGenerateColumns="False" SelectionChanged="PointsTable_SelectionChanged" CanUserAddRows="True" Margin="600, 30, 30, 300">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Binding="{Binding Path = X}" IsReadOnly="False" Header="X" Width="80"/>
+                    <DataGridTextColumn Binding="{Binding Path = Y}" IsReadOnly="False" Header="Y" Width="80"/>
+                </DataGrid.Columns>
+            </DataGrid>
+            <Button Panel.ZIndex="2" Click="Button_Click" Height="20"  Width="90" Margin="590, 10, 185, 0" Content="Size chart"/>
+    </Grid>
+</Window>
