@@ -20,7 +20,7 @@ namespace WpfBaseApp
     {
 
         public ObservableCollection<Points> PointsCollection;
-        float cfx, cfy, rty;
+        float cfx, cfy;
         public MainWindow()
         {
             InitializeComponent();
